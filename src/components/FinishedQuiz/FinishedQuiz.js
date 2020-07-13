@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './FinishedQuiz.module.css'
 import Button from '../UI/Button/Button'
+import { Link } from 'react-router-dom'
 
 export const FinishedQuiz = props => {
   const correctAnswers = Object.values(props.results).filter(r => r === 'success').length
@@ -29,17 +30,10 @@ export const FinishedQuiz = props => {
       <p>{ correctAnswers } out of { props.quiz.length } answers are correct</p>
 
       <div>
-        <Button
-          onClick = { props.onRetry }
-          type={'primary'}
-        >
-          Try again
-        </Button>
-        <Button
-          type={'secondary'}
-        >
-          Other quizzes
-        </Button>
+        <Button onClick = { props.onRetry } type={'primary'}>Try again</Button>
+        <Link to = '/'>
+          <Button type={'secondary'}>Other quizzes</Button>
+        </Link>
       </div>
     </div>
   )
